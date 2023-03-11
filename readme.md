@@ -9,7 +9,7 @@ Commands Available
 6. `delete folder <path>`
 7. `delete all from folder <path>`
 
-Install nodeJs and Clone this repo and run `node app.js` from terminal from that directory
+Install nodeJs and Clone this repo and run `node app.js` from terminal from that directory, write any command from above list in **command.txt** and save file to execute it
 
 # [DEMO]
 
