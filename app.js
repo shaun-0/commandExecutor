@@ -48,7 +48,11 @@ async function fun(){
         }catch(e){
             if(!old)console.log(`File ${oldFilePath} not found`);
             else{
-                await fs.rename(oldFilePath,newFilePath)
+                try{
+                    await fs.rename(oldFilePath,newFilePath)
+                }catch(e){
+                    console.log("Cannot raname to destination path");
+                }
                 console.log('File Renamed')
             }
         }
@@ -98,17 +102,17 @@ async function fun(){
 
             await fd.read(buff,offset,length,position)
             const command = buff.toString();
-            // create a file <path>
+            // create file <path>
             if(command.includes(CREATE_FILE)){
                 const filePath = command.substring(CREATE_FILE.length+1).trim()
                 createFile(filePath)
             }
-            // delete the file <path>
+            // delete file <path>
             if(command.includes(DELETE_FILE)){
                 const filePath = command.substring(DELETE_FILE.length+1).trim();
                 deleteFile(filePath);
             }
-            // rename the file <oldFilePath> to <newFilePath>
+            // rename file <oldFilePath> to <newFilePath>
             if(command.includes(RENAME_FILE)){
                 const _idx = command.indexOf(' to ');
                 if(_idx>=0){
